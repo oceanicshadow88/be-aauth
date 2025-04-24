@@ -1,6 +1,5 @@
 /* eslint-disable no-secrets/no-secrets */
 const dotenv = require('dotenv');
-const stripeAPI = require('stripe');
 process.env.NODE_ENV = process.env.NODE_ENV ?? 'development';
 dotenv.config();
 

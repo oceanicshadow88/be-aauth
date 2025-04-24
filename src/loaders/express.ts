@@ -5,7 +5,6 @@ const apiRouterV1 = require('../app/routes/v1/api');
 
 const cors = require('cors');
 const helmet = require('helmet');
-const swagger = require('./swagger');
 const { errorHandler } = require('./errorHandler');
 import status from 'http-status';
 import { globalAsyncErrorHandler } from './routes';
@@ -29,7 +28,6 @@ module.exports = () => {
   // }
   app.use(helmet());
   app.use(`${config.api.prefix}/v1`, globalAsyncErrorHandler(apiRouterV1));
-  swagger(app);
   app.use((err: Error, req: express.Request, res: express.Response, next: NextFunction) => {
     errorHandler.handleError(err, res);
     res.status(status.INTERNAL_SERVER_ERROR).send();
